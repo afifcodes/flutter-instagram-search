@@ -15,32 +15,29 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
   List<User> _users = [
-    User('Christin Hume', 'christinhume', 'assets/images/christin-hume.jpg',
-        true, true, true),
-    User('Stefan Stefancik', 'stefan2cik', 'assets/images/stefan-stefancik.jpg',
-        false, true, true),
-    User('Sergio De Paula', 'paulads', 'assets/images/sergio-de-paula.jpg',
-        false, true, false),
-    User('Gian Cescon', 'giancescon', 'assets/images/gian-cescon.jpg', true,
-        true, false),
-    User('Mubariz Mehdizadeh', 'mubariz',
-        'assets/images/mubariz-mehdizadeh.jpg', false, false, false),
-    User('Jonas Kakaroto', 'jonask', 'assets/images/jonas-kakaroto.jpg', true,
+    User('Christin Hume', 'christinhume', 'assets/images/christin-hume.jpg', true, true,
+        true),
+    User('Stefan Stefancik', 'stefan2cik', 'assets/images/stefan-stefancik.jpg', false,
         true, true),
-    User('Jeffery Erhunse', 'jefferyerhunse',
-        'assets/images/jeffery-erhunse.jpg', true, false, false),
-    User('Karl Magnuson', 'karlmagnuson', 'assets/images/karl-magnuson.jpg',
-        false, false, false),
-    User('Molly Blackbird', 'mollybb', 'assets/images/molly-blackbird.jpg',
-        false, false, true),
-    User('Ethan Hoover', 'ehoover', 'assets/images/ethan-hoover.jpg', false,
-        false, true),
-    User('Noah Silliman', 'noahsilliman', 'assets/images/noah-silliman.jpg',
-        false, false, false),
-    User('Drew Dizzy Graham', 'ddgraham', 'assets/images/drew-dizzy-graham.jpg',
-        true, false, false),
-    User('Craig Mckay', 'craigkay', 'assets/images/craig-mckay.jpg', false,
+    User('Sergio De Paula', 'paulads', 'assets/images/sergio-de-paula.jpg', false, true,
+        false),
+    User('Gian Cescon', 'giancescon', 'assets/images/gian-cescon.jpg', true, true, false),
+    User('Mubariz Mehdizadeh', 'mubariz', 'assets/images/mubariz-mehdizadeh.jpg', false,
         false, false),
+    User(
+        'Jonas Kakaroto', 'jonask', 'assets/images/jonas-kakaroto.jpg', true, true, true),
+    User('Jeffery Erhunse', 'jefferyerhunse', 'assets/images/jeffery-erhunse.jpg', true,
+        false, false),
+    User('Karl Magnuson', 'karlmagnuson', 'assets/images/karl-magnuson.jpg', false, false,
+        false),
+    User('Molly Blackbird', 'mollybb', 'assets/images/molly-blackbird.jpg', false, false,
+        true),
+    User('Ethan Hoover', 'ehoover', 'assets/images/ethan-hoover.jpg', false, false, true),
+    User('Noah Silliman', 'noahsilliman', 'assets/images/noah-silliman.jpg', false, false,
+        false),
+    User('Drew Dizzy Graham', 'ddgraham', 'assets/images/drew-dizzy-graham.jpg', true,
+        false, false),
+    User('Craig Mckay', 'craigkay', 'assets/images/craig-mckay.jpg', false, false, false),
   ];
 
   late List<User> displayUsers;
@@ -81,9 +78,8 @@ class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
         child: TextField(
           onChanged: (v) {
             setState(() {
-              displayUsers = v != ''
-                  ? _users.where((u) => u.username.contains(v)).toList()
-                  : _users;
+              displayUsers =
+                  v != '' ? _users.where((u) => u.username.contains(v)).toList() : _users;
             });
           },
           controller: _searchController,
@@ -97,8 +93,7 @@ class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
               hintStyle: TextStyle(color: Color(0xff8E8E8E)),
               suffixIconConstraints: BoxConstraints(
                   minWidth: 36, maxWidth: 36, minHeight: 36, maxHeight: 36),
-              contentPadding:
-                  EdgeInsets.only(right: 20, left: 20, top: 10, bottom: 12),
+              contentPadding: EdgeInsets.only(right: 20, left: 20, top: 10, bottom: 12),
               suffixIcon: _searchController.text.isNotEmpty
                   ? GestureDetector(
                       onTap: () {
@@ -137,12 +132,10 @@ class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
                         style: TextStyle(fontSize: 12),
                       ),
                     ),
-                    Tab(
-                        child:
-                            Text('Accounts', style: TextStyle(fontSize: 12))),
+                    Tab(child: Text('Accounts', style: TextStyle(fontSize: 12))),
                     Tab(child: Text('Audio', style: TextStyle(fontSize: 12))),
                     Tab(child: Text('Tags', style: TextStyle(fontSize: 12))),
-                    Tab(child: Text('Place', style: TextStyle(fontSize: 12))),
+                    Tab(child: Text('Places', style: TextStyle(fontSize: 12))),
                   ]),
               Expanded(
                 child: TabBarView(
@@ -151,8 +144,7 @@ class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
                   children: [
                     Container(
                       child: Center(
-                        child: Text('Top Result',
-                            style: TextStyle(color: Colors.white)),
+                        child: Text('Top Result', style: TextStyle(color: Colors.white)),
                       ),
                     ),
                     ListView.builder(
@@ -160,8 +152,7 @@ class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
                       itemCount: displayUsers.length,
                       itemBuilder: (context, index) {
                         return Container(
-                          padding:
-                              EdgeInsets.symmetric(horizontal: 18, vertical: 6),
+                          padding: EdgeInsets.symmetric(horizontal: 18, vertical: 6),
                           child: Row(
                             children: [
                               Container(
@@ -171,14 +162,8 @@ class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
                                     ? BoxDecoration(
                                         shape: BoxShape.circle,
                                         gradient: LinearGradient(
-                                            colors: [
-                                              Colors.pink,
-                                              Colors.orange
-                                            ],
-                                            stops: [
-                                              0.4,
-                                              0.7
-                                            ],
+                                            colors: [Colors.pink, Colors.orange],
+                                            stops: [0.4, 0.7],
                                             begin: Alignment.topRight,
                                             end: Alignment.bottomLeft),
                                       )
@@ -186,12 +171,10 @@ class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
                                 child: Container(
                                   margin: EdgeInsets.all(2),
                                   decoration: BoxDecoration(
-                                      border: Border.all(
-                                          color: Colors.black, width: 2),
+                                      border: Border.all(color: Colors.black, width: 2),
                                       shape: BoxShape.circle,
                                       image: DecorationImage(
-                                          image: AssetImage(
-                                              displayUsers[index].image),
+                                          image: AssetImage(displayUsers[index].image),
                                           fit: BoxFit.cover)),
                                 ),
                               ),
@@ -202,8 +185,7 @@ class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Row(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
+                                    crossAxisAlignment: CrossAxisAlignment.center,
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
                                       Text(displayUsers[index].username,
@@ -227,8 +209,7 @@ class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
                                       ? Text(
                                           'Followed by withflutter + 1 more',
                                           style: TextStyle(
-                                              fontSize: 12,
-                                              color: Color(0xff8E8E8E)),
+                                              fontSize: 12, color: Color(0xff8E8E8E)),
                                         )
                                       : SizedBox()
                                 ],
@@ -240,20 +221,19 @@ class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
                     ),
                     Container(
                       child: Center(
-                        child: Text('Audio Result',
-                            style: TextStyle(color: Colors.white)),
+                        child:
+                            Text('Audio Result', style: TextStyle(color: Colors.white)),
                       ),
                     ),
                     Container(
                       child: Center(
-                        child: Text('Tags Result',
-                            style: TextStyle(color: Colors.white)),
+                        child: Text('Tags Result', style: TextStyle(color: Colors.white)),
                       ),
                     ),
                     Container(
                       child: Center(
-                        child: Text('Places Result',
-                            style: TextStyle(color: Colors.white)),
+                        child:
+                            Text('Places Result', style: TextStyle(color: Colors.white)),
                       ),
                     ),
                   ],
