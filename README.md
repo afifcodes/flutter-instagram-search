@@ -1,8 +1,7 @@
+## Flutter Day 2 of 100 - Instagram Search
 <p align="center">
   <img src="https://avatars.githubusercontent.com/u/94339143?v=4" width=100/>
 </p>
-
-## Flutter Day 2 of 100 - Instagram Search
 
 ## Getting Started
 
